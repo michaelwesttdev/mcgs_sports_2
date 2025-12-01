@@ -4,6 +4,7 @@
     "allowJs": true,
     "module": "commonjs",
     "skipLibCheck": true,
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "noImplicitAny": true,
     "sourceMap": true,
@@ -12,8 +13,11 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "paths": {
-      "*": ["node_modules/*"]
+      "*": ["node_modules/*"],
+      "@/*": ["src/*"],
+      "~/*": ["src/renderer/*"]
     }
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "tailwind.config.cjs"]
 }
+ 

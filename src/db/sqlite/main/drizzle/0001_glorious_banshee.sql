@@ -1,0 +1,1 @@
+ALTER TABLE `student` ADD `house_id` text REFERENCES house(id);

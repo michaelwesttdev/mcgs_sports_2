@@ -1,0 +1,22 @@
+# Dependency directories
+node_modules
+
+# Build output
+.webpack
+out
+dist
+logs
+
+# Config files
+drizzle.config.pg.ts
+drizzle.main.config.sqlite.ts
+drizzle.perfomance_sports.config.sqlite.ts
+drizzle.team_sports.config.sqlite.ts
+forge.config.ts
+webpack.main.config.ts
+webpack.plugins.ts
+webpack.renderer.config.ts
+webpack.rules.ts
+postcss.config.js
+tailwind.config.js
+components.json

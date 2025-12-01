@@ -3,6 +3,7 @@ import { MakerSquirrel } from '@electron-forge/maker-squirrel';
 import { MakerZIP } from '@electron-forge/maker-zip';
 import { MakerDeb } from '@electron-forge/maker-deb';
 import { MakerRpm } from '@electron-forge/maker-rpm';
+import { PublisherGithub } from "@electron-forge/publisher-github";
 import { AutoUnpackNativesPlugin } from '@electron-forge/plugin-auto-unpack-natives';
 import { WebpackPlugin } from '@electron-forge/plugin-webpack';
 import { FusesPlugin } from '@electron-forge/plugin-fuses';
@@ -14,15 +15,36 @@ import { rendererConfig } from './webpack.renderer.config';
 const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
+    icon: "./logo.ico",
   },
   rebuildConfig: {},
   makers: [
-    new MakerSquirrel({}),
+    new MakerSquirrel({
+      name: "MCGSSports",
+      setupIcon: "./logo.ico",
+      certificateFile: "./cert",
+    }),
     new MakerZIP({}, ['darwin']),
     new MakerRpm({}),
     new MakerDeb({}),
   ],
-  plugins: [
+  publishers: [
+    /* 
+    new PublisherERS({
+      baseUrl: "http://mcsdata.local:8080",
+      username: "itadmin",
+      password: "Ict@Mcs", // string
+    }), */
+    new PublisherGithub({
+      authToken: process.env.GH_TOKEN,
+      repository: {
+        owner: "michaelwesttdev",
+        name: "mcgsSports_update",
+      },
+      generateReleaseNotes: true,
+    }),
+  ],
+  plugins: [ 
     new AutoUnpackNativesPlugin({}),
     new WebpackPlugin({
       mainConfig,
@@ -30,11 +52,11 @@ const config: ForgeConfig = {
         config: rendererConfig,
         entryPoints: [
           {
-            html: './src/index.html',
-            js: './src/renderer.ts',
+            html: './src/main/index.html',
+            js: './src/main/renderer.ts',
             name: 'main_window',
             preload: {
-              js: './src/preload.ts',
+              js: './src/main/preload.ts',
             },
           },
         ],

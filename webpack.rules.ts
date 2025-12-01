@@ -28,4 +28,8 @@ export const rules: Required<ModuleOptions>['rules'] = [
       },
     },
   },
+  {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/inline', // 👈 This will convert small images to base64
+      }
 ];

@@ -1,3 +1,23 @@
+# Architecture
+graph LR
+    %% Node Definitions
+    Client[CLIENT_NODE]
+    Auth[AUTH_LAYER]
+    Pipe[DATA_PIPE]
+    DB[CORE_DB]
+
+    %% Connections
+    Client -.-> Auth
+    Client -.-> Pipe
+    Auth -.-> DB
+    Pipe -.-> DB
+
+    %% Styling
+    style Client fill:#FFD000,stroke:#333,stroke-width:2px,color:#000
+    style Auth stroke-dasharray: 5 5
+    style Pipe stroke-dasharray: 5 5
+    style DB stroke-dasharray: 5 5
+    
 # mcsgs_sports
 # Foobar
 

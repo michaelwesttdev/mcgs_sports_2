@@ -1,4 +1,5 @@
 # Architecture
+```mermaid
 graph LR
     %% Node Definitions
     Client[CLIENT_NODE]
@@ -17,6 +18,7 @@ graph LR
     style Auth stroke-dasharray: 5 5
     style Pipe stroke-dasharray: 5 5
     style DB stroke-dasharray: 5 5
+```
     
 # mcsgs_sports
 # Foobar
